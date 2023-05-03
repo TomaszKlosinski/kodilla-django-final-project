@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block title %}Post detail{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<h2>{{ post.author.nick }} | {{ post.created }}</h2>
+<p>
+   {{ post.content }}
+</p>
+<div><img src="{{ post.image.url }}"></div>
+
+<br/>
+<a href="{% url "posts:posts_list" %}">back</a>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>{% block title %}Title{% endblock %}</title>
+
+   {% load static %}
+   <link rel="stylesheet" type="text/css" href="{% static 'maths/css/style.css' %}">
+
+   {# Load CSS and JavaScript #}
+   {% bootstrap_css %}
+   {% bootstrap_javascript %}
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link" href="/me">About me</a>
+              <a class="nav-link" href="/contact">Contact</a>
+              <a class="nav-link" href="/maths">Maths</a>
+              <a class="nav-link" href="/posts">Posts</a>
+              <a class="nav-link" href="/books">Books</a>
+              {% if user.is_authenticated %}
+              <p class="nav-link">
+                  {{ user.username }} | <a href="{% url 'logout' %}">logout</a>
+              </p>
+              {% else %}
+                  <a class="nav-link" href="{% url 'login' %}">login</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <div id="content">
+    <div id="header">
+            <img src="{% static 'maths/img/logo.svg' %}" width="600" height="300">
+    </div>
+
+    {% bootstrap_messages %}
+    <div id="inner-content">
+        {% block content %}
+            To jest blok kodu. W innych szablonach możemy go nadpisać
+        {% endblock %}
+    </div>
+    </div>
+</body>
+</html>
