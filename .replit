@@ -90,3 +90,6 @@ start = "pylsp"
 
 [deployment]
 run = ["sh", "-c", "python3 manage.py runserver 0.0.0.0:3000"]
+build = ["sh", "-c", "python3 manage.py migrate"]
+ignorePorts = false
+deploymentTarget = "gce"
