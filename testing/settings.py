@@ -31,7 +31,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Deployment settings
 SECRET_KEY = os.environ.get('SECRET_KEY', "dummy key")
 DEBUG = os.environ.get("DEBUG", False)
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver', 'https://kodilla-django-final-project.tomaszklosinski.repl.co']
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver', 'https://kodilla-django-final-project.tomaszklosinski.repl.co']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
